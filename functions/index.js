@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 import functions from "firebase-functions";
 import "dotenv/config";
-import { posts } from "./mongoConnect.js";
-import { addPost } from "./posts.js";
+import { posts } from "./src/mongoConnect.js";
+import { addPost } from "./src/posts.js";
 
 const app = express();
 app.use(cors());
@@ -13,9 +13,9 @@ app.get("/test", (req, res) => {
   res.send("Hooray, it works!");
 });
 
-app.post("/", addPost);
+app.post("/posts", addPost);
 
-app.get("/", async (req, res) => {
+app.get("/posts", async (req, res) => {
   const allPosts = await posts.find().toArray();
   res.send(allPosts);
 });
