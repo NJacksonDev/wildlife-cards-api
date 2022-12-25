@@ -9,6 +9,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/test", (req, res) => {
+  res.send("Hooray, it works!");
+});
+
 app.post("/", addPost);
 
 app.get("/", async (req, res) => {
